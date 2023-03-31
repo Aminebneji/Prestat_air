@@ -2,17 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
-    public function index(): Response
+    #[Route('/admin/user', name: 'admin_users')]
+    public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/index.html.twig');
+        return $this->render('user/adminList.html.twig', [
+            'users' => $userRepository->findAll()
+        ]);
     }
 
     #[Route('/{email}', name: 'user_detail')]
@@ -29,5 +33,15 @@ class UserController extends AbstractController
         return $this->render('user/showAllUser.html.twig', [
             'users' => $userRepository->findAll()
         ]);
+    }
+
+    #[Route('/admin/user/delete/{id}', name: 'user_delete')]
+    public function delete(User $user, ManagerRegistry $managerRegistry): Response
+    {
+        $manager = $managerRegistry->getManager();
+        $manager->remove($user);
+        $manager->flush();
+        $this->addFlash('success', $user->getFirstName() . ' ' . strtoupper($user->getName()) . ' a bien été supprimé');
+        return $this->redirectToRoute('admin_users');
     }
 }

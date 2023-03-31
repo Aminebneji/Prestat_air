@@ -6,9 +6,11 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -85,12 +87,6 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
 
-            ->add('kind', ChoiceType::class, [
-                'choices' => [
-                    'PRESTATAIRE' => 'PRESTATAIRE',
-                    'PARTICULIER' => 'PARTICULIER',
-                ]
-            ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -99,16 +95,22 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->get('kind')
-            ->addModelTransformer(new CallbackTransformer(
-                fn ($kindAsArray) => count($kindAsArray) ? $kindAsArray[1] : null,
-                fn ($kindAsString) => [$kindAsString]
-            ))
             ->add('description', TextType::class, [
                 'attr' => [
                     'maxlength' => 2000
                 ]
-            ]);
+            ])
+            ->add('kind', ChoiceType::class, [
+                'choices' => [
+                    'homme' => 'homme',
+                    'femme' => 'femme',
+                ]
+            ])
+            ->get('kind')
+            ->addModelTransformer(new CallbackTransformer(
+                fn ($kindAsArray) => count($kindAsArray) ? $kindAsArray[1] : null,
+                fn ($kindAsString) => [$kindAsString]
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver): void

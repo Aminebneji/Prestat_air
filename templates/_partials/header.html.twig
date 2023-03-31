@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg bg-dark p-3">
     <a class="navbar-brand" href="{{path('home')}}"><i class="bi-house text-light"></i></a>
 
+    {% if is_granted('ROLE_ADMIN') %}
+    <a class="btn btn-warning" href="{{path('admin')}}">ADMIN</a>
+    {% endif %}
+
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,14 +12,14 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light ">
+                {% if app.user %}
                 <li class="nav-item ">
                     <a class="nav-link active text-light" aria-current="page" href="#">Compte</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Discussion</a>
-                </li>
+                {% endif %}
+
                 <li class="nav-item ">
-                    <a class="nav-link text-light" href="{{ path('showAllUser') }}">Rechercher</a>
+                    <a class="nav-link text-light" href="{{ path('showAllProducts') }}">Rechercher</a>
                 </li>
             </ul>
 

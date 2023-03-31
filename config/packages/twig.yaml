@@ -1,12 +1,12 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
-        contact_company: 'Prestat_air' 
-        contact_adress: '59 Rue de la Loire'
-        contact_zip: '59100'
+        contact_company: 'Shoes.RAR' 
+        contact_adress: '69 Rue du commerce'
+        contact_zip: '59000'
         contact_city: 'Lille' 
         contact_phone: '01 12 23 34 45' 
-        contact_email: 'contact@prestat_air.com'
+        contact_email: 'contactshoes.RAR@.com'
     form_themes: ['bootstrap_5_layout.html.twig']
 
 when@test:

@@ -7,21 +7,18 @@
 
     <div class="row my-5">
         <div class="col-12 text-center">
-            <h1> {{ app.user.kind[0] }}</h1>
+            <h1> Produits </h1>
         </div>
     </div>
 
     <div class="row my-5">
-        <div class="col-12 text-center">
-            <h2 class="mb-5">Lastest</h2>
-        </div>
+
         {% for user in users |reverse %}
         {% if loop.index < 16 %} <div class="col-3 p-3">
             <div class="card text-center">
-                <img src="#" class="card-img-top p-3" alt="user image">
                 <div class="card-body">
                     <h5 class="card-title">{{ user.name |upper}}</h5>
-                    <p class="card-text">{{ user.name}}</p>
+                    <p class="card-text">{{ user.firstname}}</p>
                     <p class="card-text">{{ user.kind[0]}} </p>
                     <a href="{{path('user_detail' , {'email' : user.email}) }}" class="btn btn-primary">See</a>
                 </div>

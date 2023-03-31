@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block body %}
+
+<div class="row my-5">
+    <div class="col-12 text-center">
+        <h1>Register</h1>
+    </div>
+</div>
+<form method="post">
+    {{ form_start(registrationForm) }}
+    <div class=" container_fluid">
+        <div>
+            {{ form_row(registrationForm.email) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.firstname, {
+            'label': 'Prénom'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.name, {
+            'label': 'Nom'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.city, {
+            label: 'City'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.region, {
+            label: 'Region'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.plainPassword.first, {
+            label: 'Mot de passe'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.plainPassword.second, {
+            label: 'Confirmation mot de passe'
+            }) }}
+        </div>
+
+        <div>
+            {{ form_row(registrationForm.kind, {
+            label: 'genre'
+            }) }}
+        </div>
+        <div>
+            {{ form_row(registrationForm.description, {
+            label: 'decrivez vous'
+            }) }}
+        </div>
+    </div>
+
+    <div>
+        {{ form_row(registrationForm.agreeTerms, {
+        label: 'j\'accepte les CGU'
+        }) }}
+    </div>
+
+    <div>
+        <div class="col-6 offset-3 mb-5 text-end">
+            <button type="submit" class="btn btn-success">Register</button>
+        </div>
+    </div>
+    {{ form_end(registrationForm) }}
+</form>
+
+
+
+
+<div class="row text-center mb-5">
+    <hr class="col-6 offset-3">
+    <div class="col-12">
+        <p>Déjà inscrit ? <a href="{{ path('app_login') }}">Connectez-vous !</a></p>
+    </div>
+</div>
+{% endblock %}
