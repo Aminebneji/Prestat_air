@@ -41,7 +41,6 @@ class UserController extends AbstractController
         $manager = $managerRegistry->getManager();
         $manager->remove($user);
         $manager->flush();
-        $this->addFlash('success', $user->getFirstName() . ' ' . strtoupper($user->getName()) . ' a bien été supprimé');
         return $this->redirectToRoute('admin_users');
     }
 }
