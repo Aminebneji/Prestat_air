@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block description %}{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="container py-5">
+
+    <div class="row my-5">
+
+        <div class="col-4 offset-1">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <img src="{{ asset('imgs/products/' ~ product.image) }}" alt=" {{product.name}} - image"
+                        class="w-100">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-5 offset-1">
+            <h1 class="text-center">{{ product.name }}</h1>
+            <hr class="text-secondary my-4">
+            <p class="fs-3">
+                {{ product.price|number_format(2, ',', ' ') }} €
+            </p>
+            <hr class="text-secondary my-4">
+            <p>{{ product.size}}</p>
+            <hr class="text-secondary my-4">
+            <hr class="text-secondary my-4">
+            {% if app.user %}
+            <a class="btn btn-success" href="{{ path('cart_add', {'id': product.id}) }}">Ajouter au Panier</a>
+            {% endif %}
+            <hr class="text-secondary my-4">
+        </div>
+
+    </div>
+
+    <div class="row my-5">
+        <div class="col-10 offset-1">
+            <h2 class="mb-3">Description</h2>
+            {{ product.description }}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}produits{% endblock %}
+
+{% block body %}
+
+<h1 class="pb-5">Liste des produits</h1>
+
+<table class="table table-hover table-dark text-center align-middle">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>image</th>
+            <th>name</th>
+            <th>size</th>
+            <th>year</th>
+            <th>description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ product.image}}</td>
+            <td>{{ product.name|upper }}</td>
+            <td>{{ product.size}}</td>
+            <td>{{ product.year}}</td>
+            <td>{{ product.description|slice(0, 25)}}</td>
+            <td>
+                <a href="{{path('product_update', {'id' : product.id} )}}" class="me-2"><i
+                        class="bi bi-pencil-square text-primary"></i></a>
+                <a href="{{path('product_delete', {'id': product.id} )}}"
+                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"><i
+                        class="bi bi-trash text-danger"></i></a>
+            </td>
+        </tr>
+        {% else %}
+        <tr class="text-center">
+            <td colspan="8">Aucun produit trouvé</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="text-end mt-4">
+    <a href="{{path('product_create')}}" class="btn btn-success">Ajouter un produit</a>
+</div>
+
+{% endblock %}
