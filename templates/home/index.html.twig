@@ -3,9 +3,13 @@
 {% block title %}home{% endblock %}
 
 {% block body %}
-<main class="container_fluid">
-    <h5 style="margin-left: 30%">Bienvenue ! </h5>
-    <p class="text-center" style="width:80%; margin: 10%">Bienvenue sur notre site de vente de chaussures
+<div class="homeContainer"> 
+    {% if app.user %}
+        <p class="hello"> Bonjour {{ app.user.firstname }} !!</p> 
+    {% endif %}   
+<div class="presentationContainer container_fluid">
+   <div class="text">
+    <p>Bienvenue sur notre site de vente de chaussures
         rares et uniques !
         Nous
         sommes
@@ -30,7 +34,29 @@
         style et à
         votre
         personnalité. Commandez dès maintenant et offrez à vos pieds le confort et l'élégance qu'ils
-        méritent !</p>
+        méritent !</p> 
+   </div>
+        <img src="{{ asset('imgs/canva/homeImage.png')}}" class="w-50 h-50">
+</div> 
 
-</main>
+<div class="tryptique">
+  <div class="row">
+    <div class="col">
+              <img src="{{ asset('imgs/canva/converse.jpg')}}" class="w-100 h-100">
+    </div>
+    <div class="col">
+              <img src="{{ asset('imgs/canva/DrM.jpg')}}" class="w-100 h-100">
+    </div>
+    <div class="col">
+              <img src="{{ asset('imgs/canva/nike.jpg')}}"class="w-100 h-100">
+    </div>
+  </div>
+</div>
+
+<div class="newsletter">
+<p>Abonnez-vous à notre newsletter pour être informée avant tout le monde des prochaines sorties, des exclusivités, des actualités et de nos promos !<p>
+<span> s'inscire à la newsletter</span>
+<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+</div>
+</div> 
 {% endblock %}

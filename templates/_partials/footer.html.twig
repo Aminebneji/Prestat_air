@@ -10,9 +10,9 @@
             </ul>
         </div>
         <div class="col-4 my-auto">
-            {% if app.user and app.user.kind %}
+            {% if app.user and app.user.name %}
             <div class="mb-3">
-                <p class=" text-light">{{ app.user.kind[0] }}</p>
+                <p class=" text-light">{{app.user.firstname}} {{ app.user.name }}</p>
             </div>
             {% endif %}
 

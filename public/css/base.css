@@ -6,15 +6,19 @@
     text-decoration: none;
 }
 
+
 /* **********************************    GLOBAL   *****************************************  */
 * {
-    font-family: 'Roboto', sans-serif;
+    font-family:'Neuton', serif;
+
 }
 
 h1,
 h2,
-h3 {
-    font-family: 'Sofia Sans', sans-serif;
+h3,
+h5{ 
+    font-weight: 700;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 
@@ -23,20 +27,82 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 7%;
     z-index: 1;
+    background-color: rgba(0, 0, 0, 0.384);
+    font-size: 1.15vw;
 }
 
 header i {
     height: 35px;
 }
+header li{ 
+    margin-right: 35px;
+}
+
+.hello{ 
+    margin-left: 9%;
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 3.5vw;
+}
 
 /* **********************************     MAIN    *****************************************  */
 
-main {
-    margin: 20vh;
+.homeContainer { 
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 10vh;
+    padding-top: 8%;
+}
+
+.presentationContainer{ 
+    display: flex;
+    margin-bottom: 5%;
+}
+.presentationContainer .text{ 
+    margin-top: 5vh;
+    margin-left: 9%;
+    font-size: 1.5vw;
+    font-weight: 700;
+    width: 35%;
+}
+
+.presentationContainer img{
+    margin-left: 3%;
+    margin-top: 7.5%;
+}
+
+.newsletter{ 
+    margin: 5%;
+}
+
+.newsletter p{ 
+    font-size: 2.5vw;
+    font-family: 'Neuton', serif;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.newsletter span{
+    font-size: 20px;
+    font-weight: 300;
+    color:rgba(0, 0, 0, 0.575);
+    text-align: center;
+}
+
+.newsletter form{ 
+    margin-top: 3%;
+}
+
+.tryptique{ 
+    margin-top: 5vh;
+    width: 95%;
+    margin-left: 2.5%;
 }
 
 /* **********************************    FOOTER   *****************************************  */
+
 
 footer ul {
     padding: 0;
@@ -49,5 +115,118 @@ footer a {
 }
 
 footer #copyright p {
-    font-size: 0.75rem;
+    font-size: 1.9vw;
+}
+
+/* **********************************   ALL PRODUCT PAGE CSS   *****************************************  */
+
+.product-img{ 
+    margin-bottom: 15px;
+}
+
+.col-3{ 
+    height: 350%;
+}
+
+/* **********************************   CARDS PRODUCT PAGE CSS   *****************************************  */
+
+.showAll{ 
+    margin-top: 10vh;
+}
+
+/* **********************************   Cart   *****************************************  */
+
+.cart{ 
+    margin-top: 10vh;
+    margin-bottom: 20%;
+}
+
+.cart h1{ 
+    margin-bottom: 2vh;
+}
+
+/* **********************************   CONNECTION PAGE   *****************************************  */
+
+.connect{
+    margin-top: 10vh;
+    text-align: center;
+}
+
+.connect label{ 
+    font-size: 1.5vw;
+}
+.connect input{ 
+    width: 15vw;
+    margin-left: 43%;
+    margin-bottom: 2%;
+}
+
+.creaAccount{ 
+    width: 80%;
+    margin-left: 15%;
+    margin: 5%;
+}
+
+.creaAccount p, a{ 
+    font-size: 1.5vw;
+    font-family: 'Neuton', serif;
+}
+
+/* **********************************   REGISTER PAGE   *****************************************  */
+
+.registerTitle{ 
+    margin-top: 10vh;
+    text-align: center;
+
+} 
+
+.registerForm{
+    width: 20vw;
+    margin-left: 43%;
+    margin-bottom: 2%;
+}
+
+.registerForm label{
+    font-size: 1.5vw;
+    font-family: 'Neuton', serif;
+} 
+
+@media screen and (max-width:990px){
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 7%;
+        z-index: 1;
+        background-color: transparent;
+        font-size: 1.15vw;
+    }
+    header i {
+        height: 35px;
+    }
+    header li{ 
+        background-color: rgba(0, 0, 0, 0.445);
+        text-align: center;
+    }
+
+    .product-img{ 
+        margin-bottom: 10px;
+        width: 170px;
+        height: 100px;
+    }
+
+    .card-body{
+        height: 300px;
+    }
+    
+    .col-3{ 
+        margin: 0;
+    }
+
+    footer {
+        margin-top: 15%;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }

@@ -5,12 +5,10 @@
 
 {% block body %}
 
-<div class="row my-5">
-    <div class="col-12 text-center">
+<div class="registerTitle">
         <h1>Register</h1>
-    </div>
 </div>
-<form method="post">
+<form class="registerForm" method="post">
     {{ form_start(registrationForm) }}
     <div class=" container_fluid">
         <div>
@@ -73,11 +71,7 @@
     {{ form_end(registrationForm) }}
 </form>
 
-
-
-
 <div class="row text-center mb-5">
-    <hr class="col-6 offset-3">
     <div class="col-12">
         <p>Déjà inscrit ? <a href="{{ path('app_login') }}">Connectez-vous !</a></p>
     </div>

@@ -26,9 +26,8 @@
                 {{ product.price|number_format(2, ',', ' ') }} €
             </p>
             <hr class="text-secondary my-4">
-            <p>{{ product.size}}</p>
-            <hr class="text-secondary my-4">
-            <hr class="text-secondary my-4">
+            <p>Taille : {{ product.size}}</p>
+           
             {% if app.user %}
             <a class="btn btn-success" href="{{ path('cart_add', {'id': product.id}) }}">Ajouter au Panier</a>
             {% endif %}
