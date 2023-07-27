@@ -1,62 +1,77 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}home{% endblock %}
+{% block title %}home
+{% endblock %}
 
 {% block body %}
-<div class="homeContainer"> 
-    {% if app.user %}
-        <p class="hello"> Bonjour {{ app.user.firstname }} !!</p> 
-    {% endif %}   
-<div class="presentationContainer container_fluid">
-   <div class="text">
-    <p>Bienvenue sur notre site de vente de chaussures
-        rares et uniques !
-        Nous
-        sommes
-        fiers de vous
-        offrir une
-        sélection
-        exclusive de chaussures de qualité supérieure, conçues par les marques les plus prestigieuses du
-        marché. Que
-        vous
-        soyez
-        à la recherche de sneakers tendance, de bottes élégantes ou de sandales estivales, vous
-        trouverez
-        ici des
-        modèles
-        uniques qui ne manqueront pas de faire tourner les têtes. Notre équipe passionnée se tient à
-        votre
-        disposition
-        pour
-        vous
-        conseiller et vous aider à trouver la paire de chaussures rare qui conviendra parfaitement à
-        votre
-        style et à
-        votre
-        personnalité. Commandez dès maintenant et offrez à vos pieds le confort et l'élégance qu'ils
-        méritent !</p> 
-   </div>
-        <img src="{{ asset('imgs/canva/homeImage.png')}}" class="w-50 h-50">
-</div> 
+	<div class="homeContainer">
+		{% if app.user %}
+			<p class="hello">
+				Bonjour
+				{{ app.user.firstname }}
+				!!</p>
+		{% endif %}
+		<div class="presentationContainer container_fluid">
+			<div class="text">
+				<p>Bienvenue sur notre site de vente de chaussures
+					        rares et uniques !
+					        Nous
+					        sommes
+					        fiers de vous
+					        offrir une
+					        sélection
+					        exclusive de chaussures de qualité supérieure, conçues par les marques les plus prestigieuses du
+					        marché. Que
+					        vous
+					        soyez
+					        à la recherche de sneakers tendance, de bottes élégantes ou de sandales estivales, vous
+					        trouverez
+					        ici des
+					        modèles
+					        uniques qui ne manqueront pas de faire tourner les têtes. Notre équipe passionnée se tient à
+					        votre
+					        disposition
+					        pour
+					        vous
+					        conseiller et vous aider à trouver la paire de chaussures rare qui conviendra parfaitement à
+					        votre
+					        style et à
+					        votre
+					        personnalité. Commandez dès maintenant et offrez à vos pieds le confort et l'élégance qu'ils
+					        méritent !</p>
+			</div>
+			<div class="lastProduct">
+				{% if closest %}
+				<h1>Notre dernière paire :</h1>
+					<p>{{ closest.name }}</p>
+					<img src="{{ asset('imgs/products/' ~ closest.image) }}">
+                    <a href="{{path('product_show' , {'name' : closest.name}) }}" class="btn btn-outline-secondary">Voir</a>
+				{% else %}
+					<p>Aucun produit trouvé.</p>
+				{% endif %}
+			</div>
+		</div>
+		<div class="tryptique">
+			<div class="row">
+				<div class="col">
+					<img src="{{ asset('imgs/canva/converse.jpg')}}" class="w-100 h-100">
+				</div>
+				<div class="col">
+					<img src="{{ asset('imgs/canva/DrM.jpg')}}" class="w-100 h-100">
+				</div>
+				<div class="col">
+					<img src="{{ asset('imgs/canva/nike.jpg')}}" class="w-100 h-100">
+				</div>
+			</div>
+		</div>
 
-<div class="tryptique">
-  <div class="row">
-    <div class="col">
-              <img src="{{ asset('imgs/canva/converse.jpg')}}" class="w-100 h-100">
-    </div>
-    <div class="col">
-              <img src="{{ asset('imgs/canva/DrM.jpg')}}" class="w-100 h-100">
-    </div>
-    <div class="col">
-              <img src="{{ asset('imgs/canva/nike.jpg')}}"class="w-100 h-100">
-    </div>
-  </div>
-</div>
-
-<div class="newsletter">
-<p>Abonnez-vous à notre newsletter pour être informée avant tout le monde des prochaines sorties, des exclusivités, des actualités et de nos promos !<p>
-<span> s'inscire à la newsletter</span>
-<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
-</div>
-</div> 
+		<div class="newsletter">
+			<p>Abonnez-vous à notre newsletter pour être informée avant tout le monde des prochaines sorties, des exclusivités, des actualités et de nos promos !</p>
+			<p>
+				<span>
+					s'inscire à la newsletter</span>
+				<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+			</p>
+		</div>
+	</div>
 {% endblock %}

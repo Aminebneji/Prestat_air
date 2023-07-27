@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Products;
 use App\Form\ProductType;
+use App\Form\sizeType;
 use App\Repository\ProductsRepository;
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,22 +40,20 @@ class ProductsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $image = $form['image']->getData();
             if (!empty($image)) {
                 $imgName = time() . '-img.' . $image->guessExtension();
                 $image->move($this->getParameter('product_img_dir'), $imgName);
                 $product->setImage($imgName);
+                $product->setCreatedAt(new \DateTimeImmutable);
             }
 
             $manager = $this->managerRegistry->getManager();
             $manager->persist($product);
             $manager->flush();
 
-
             return $this->redirectToRoute('product_create');
         }
-
         return $this->render('products/createProduct.html.twig', [
             'ProductForm' => $form->createView()
         ]);
@@ -87,7 +87,7 @@ class ProductsController extends AbstractController
             return $this->redirectToRoute('admin_products');
         }
 
-        return $this->render('products/createProduct.html.twig', [
+        return $this->render('products/createProduct.html.twig',[
             'ProductForm' => $form->createView()
         ]);
     }
@@ -119,10 +119,11 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/product/{name}', name: 'product_show')]
-    public function show(ProductsRepository $productRepository, string $name): Response
-    {
+    public function show(ProductsRepository $productRepository, string $name ): Response
+    {   
         return $this->render('products/show.html.twig', [
             'product' => $productRepository->findOneBy(['name' => $name])
         ]);
     }
+
 }

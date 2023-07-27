@@ -20,8 +20,8 @@ class Products
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column]
-    private ?float $size = null;
+    #[ORM\Column(type: Types::ARRAY)]
+    private  $size = [];
 
     #[ORM\Column(length: 50)]
     private ?string $year = null;
@@ -32,6 +32,10 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $createdAt = null;
+
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -57,22 +61,23 @@ class Products
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
         return $this;
     }
 
-    public function getSize(): ?float
+    
+    public function setSize($size): self
     {
-        return $this->size;
-    }
-
-    public function setSize(float $size): self
-    {
-        $this->size = $size;
-
+        $this->size =  $size;
+        
         return $this;
     }
 
+    public function getSize(): array
+    {
+        $size = $this->size;
+        return $size;
+    }
+    
     public function getYear(): ?string
     {
         return $this->year;
@@ -108,4 +113,17 @@ class Products
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
 }

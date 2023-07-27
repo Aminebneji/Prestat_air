@@ -16,7 +16,6 @@
                     <img src="{{ asset('imgs/products/' ~ product.image) }}" alt="image de la chaussure" class="product-img w-100" height="250px">
                     <h5 class="card-title">{{ product.name[:13]|upper}} {% if product.name|length > 15 %} ... {% endif %}</h5>
                     <p class="card-text">{{ product.price|number_format(2, ',', ' ') }} €</p>
-                    <p class="card-text">{{ product.size}} </p>
                     <a href="{{path('product_show' , {'name' : product.name}) }}" class="btn btn-primary">Voir</a>
                 </div>
             </div>

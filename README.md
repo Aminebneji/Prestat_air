@@ -9,18 +9,19 @@ text 'Questrial', sans-serif;
 
 - maquette 
 - relever toutes les parties statiques de l'interface / dynamique 
-- permettre aux users de modifier leurs compte (nom prenom mdp va pas plus loin)
+
 - filtre produits
 - recherche par attribut 
 
 ### à faire Back 
-- dateTime products
-- tri chaussures H/F 
-- relation products user pour les commandes 
+- tri chaussures H/F ( nouveaux parametres a product);
+- relation products - user pour les commandes ( nouvelle antité Commande one to many products et user);  
+- permettre aux users de modifier leurs compte (nom prenom mdp va pas plus loin);
+
 - schéma BDD quand tu auras tout fini 
 
-### attribut 
-= taille, marque ect : relation entre produits - produitsAttribut / produits - produitsCatégorie
+<!-- ### attribut 
+= taille, marque ect : relation entre produits - produitsAttribut / produits - produitsCatégorie -->
 
 
 ### droits/accès/permission de fichiers 
@@ -32,3 +33,11 @@ text 'Questrial', sans-serif;
     = injection 
     = Admin granted 
     -OWASP normes veille 
+
+
+
+
+### migrations
+
+symfony console make:migration 
+symfony console doctrine:migrations:migrate 

@@ -27,14 +27,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/research/all', name: 'showAllUser')]
-    public function showAllUser(UserRepository $userRepository): Response
-    {
-        return $this->render('user/showAllUser.html.twig', [
-            'users' => $userRepository->findAll()
-        ]);
-    }
-
     #[Route('/admin/user/delete/{id}', name: 'user_delete')]
     public function delete(User $user, ManagerRegistry $managerRegistry): Response
     {

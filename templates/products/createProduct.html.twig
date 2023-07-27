@@ -1,54 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ app.request.attributes.get('_route') == 'product_create' ? 'Création' : 'Modification' }} produit{%
+{% block title %}
+	{{ app.request.attributes.get('_route') == 'product_create' ? 'Création' : 'Modification' }}
+	produit
+{%
 endblock %}
 
 {% block body %}
+	<h1 class="productFormTitle mb-5">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' : 'Modifier' }}
+		un produit</h1>
+	<div class="productForm">
 
-<h1 class="mb-5">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' : 'Modifier' }} un produit</h1>
-
-{{ form_start(ProductForm) }}
+		{{ form_start(ProductForm) }}
 
 
-<div class="row">
-    <div class="col-4">
-        {{ form_row(ProductForm.name, {
+		<div >
+			<div >
+				{{ form_row(ProductForm.name, {
         'label': 'Nom',
         'attr': {
         'placeholder': 'Ex.: Dunk Low Off-White Lot 28 '
         }
         }) }}
-    </div>
-</div>
-<div class="col-3">
-    {{ form_row(ProductForm.year, {
+			</div>
+		</div>
+		<div >
+			{{ form_row(ProductForm.year, {
     'label': 'Periode',
     'attr': {
     'placeholder': '2000 , 90"s, 80"s ...'
     }
     }) }}
-</div>
-<div class="row">
-    <div class="col-4">
-        {{ form_row(ProductForm.price, {
+		</div>
+		<div >
+			<div >
+				{{ form_row(ProductForm.price, {
         'label': 'Prix',
         'attr': {
         'placeholder': 'Ex.: Prix (en €)'
         }
         }) }}
-    </div>
-</div>
-<div class="col-4">
-    {{ form_row(ProductForm.size, {
+			</div>
+		</div>
+		<div>
+			{{ form_row(ProductForm.size, {
     'label': 'Taille',
-    'attr': {
-    'placeholder': '42/2'
-    }
     }) }}
-</div>
-<div class="row">
-    <div>
-        {{ form_row(ProductForm.description, {
+		</div>
+		<div class="productFormDescription">
+			<div>
+				{{ form_row(ProductForm.description, {
         'label': 'Description',
         'attr': {
         'placeholder': 'Ex.: Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita provident et quod.
@@ -57,21 +58,20 @@ endblock %}
         facilis doloremque tempora ab quidem incidunt !'
         }
         }) }}
-    </div>
-</div>
-<div class="col-3">
-    {{ form_row(ProductForm.image, {
+			</div>
+		</div>
+		<div>
+			{{ form_row(ProductForm.image, {
     'label': 'Image de la chaussure'
     }) }}
-</div>
-</div>
-<div class="row">
-    <div class="col-12 text-end my-3">
-        <a href="{{ path('admin_products') }}" class="btn btn-outline-danger me-3">Annuler</a>
-        <button class="btn btn-success">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' :
+		</div>
+	</div>
+	<div class="buttons row">
+		<div class="col-12 text-end my-3">
+			<a href="{{ path('admin_products') }}" class="btn btn-outline-danger me-3">Annuler</a>
+			<button class="btn btn-success">{{ app.request.attributes.get('_route') == 'product_create' ? 'Créer' :
             'Modifier' }}</button>
-    </div>
-</div>
-{{ form_end(ProductForm) }}
-
-{% endblock %}
+		</div>
+	</div>
+	{{ form_end(ProductForm) }}
+</div>{% endblock %}
