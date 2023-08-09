@@ -1,0 +1,42 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block title %}commandes{% endblock %}
+
+{% block body %}
+
+<h1 class="pb-5 List">Liste des produits</h1>
+
+<table class="table table-hover table-dark text-center align-middle">
+    <thead>
+        <tr>
+            <th>N°</th>
+            <th>produit</th>
+            <th>size</th>
+            <th>utilisateur</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for purchase in purchase %}
+        <tr>
+            <td>{{ purchase.product.id}}</td>
+            <td>{{ purchase.product.name }}</td>
+            <td>{{ purchase.selectedSize}}</td>
+            <td>{{purchase.user.name}}-{{purchase.user.firstname}}</td>
+            <td></td>
+            {# <td>
+                <a href="{{path('product_update', {'id' : product.id} )}}" class="me-2"><i
+                        class="bi bi-pencil-square text-primary"></i></a>
+                <a href="{{path('product_delete', {'id': product.id} )}}"
+                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"><i
+                        class="bi bi-trash text-danger"></i></a>
+            </td> #}
+        </tr>
+        {% else %}
+        <tr class="text-center">
+            <td colspan="8">Aucun produit trouvé</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
