@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,11 +22,8 @@ class Products
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private  $size = [];
-
-    #[ORM\Column(length: 50)]
-    private ?string $year = null;
+    #[ORM\Column()]
+    private array $adminSelectedsize;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -34,6 +33,14 @@ class Products
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Purchase::class)]
+    private Collection $purchases;
+
+    public function __construct()
+    {
+        $this->purchases = new ArrayCollection();
+    }
 
     
     public function getId(): ?int
@@ -64,31 +71,20 @@ class Products
         return $this;
     }
 
-    
-    public function setSize($size): self
+    public function getadminSelectedsize(): array
     {
-        $this->size =  $size;
-        
-        return $this;
-    }
+        $adminSelectedsize = $this->adminSelectedsize;
 
-    public function getSize(): array
+        return  $adminSelectedsize;
+    }
+    
+    public function setadminSelectedsize(array $size )  
     {
-        $size = $this->size;
+        $this->adminSelectedsize = $size ;
+        
         return $size;
     }
-    
-    public function getYear(): ?string
-    {
-        return $this->year;
-    }
 
-    public function setYear(string $year): self
-    {
-        $this->year = $year;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -122,6 +118,36 @@ class Products
     public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Purchase>
+     */
+    public function getPurchases(): Collection
+    {
+        return $this->purchases;
+    }
+
+    public function addPurchase(Purchase $purchase): self
+    {
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases->add($purchase);
+            $purchase->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchase(Purchase $purchase): self
+    {
+        if ($this->purchases->removeElement($purchase)) {
+            // set the owning side to null (unless already changed)
+            if ($purchase->getProduct() === $this) {
+                $purchase->setProduct(null);
+            }
+        }
 
         return $this;
     }

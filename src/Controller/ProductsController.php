@@ -4,9 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Products;
 use App\Form\ProductType;
-use App\Form\sizeType;
 use App\Repository\ProductsRepository;
-use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -102,10 +100,11 @@ class ProductsController extends AbstractController
     }
 
     #[Route('/admin/products', name: 'admin_products')]
-    public function adminList(ProductsRepository $productRepository): Response
-    {
+    public function adminList(ProductsRepository $productRepository  ): Response
+    {           
+
         return $this->render('products/adminListProducts.html.twig', [
-            'products' => $productRepository->findAll()
+            'products' => $productRepository->findAll(),
         ]);
     }
 
@@ -121,8 +120,13 @@ class ProductsController extends AbstractController
     #[Route('/product/{name}', name: 'product_show')]
     public function show(ProductsRepository $productRepository, string $name ): Response
     {   
+        $product = $productRepository->findOneBy(['name' => $name]);
+        $sizess = $product->getadminSelectedsize(); 
+        $displayedSize = implode(',', $sizess);
+
         return $this->render('products/show.html.twig', [
-            'product' => $productRepository->findOneBy(['name' => $name])
+            'product' => $productRepository->findOneBy(['name' => $name]),
+            'size' => $displayedSize
         ]);
     }
 

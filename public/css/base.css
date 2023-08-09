@@ -279,3 +279,23 @@ a {
     width: 100%;
   }
 }
+
+/* **********************************   Purchase PAGE   *****************************************  */
+
+.purchase{ 
+
+  margin-top: 10%;
+  padding-bottom: 10%;
+}
+
+.purchase h1 { 
+  margin-left: 5%;
+} 
+.purchaseSelector{ 
+  margin-left: 5%;
+  width: 25%;
+}
+.purchaseLink{ 
+  margin-left: 5%;
+
+}

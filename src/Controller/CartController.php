@@ -31,9 +31,9 @@ class CartController extends AbstractController
             $this->addFlash('success', 'L\'article a bien été ajouté au panier');
         }
         if ($request->headers->get('referer') === $this->getParameter('domain') . '/cart/') {
-            return $this->redirectToRoute('cart');
+            return $this->redirectToRoute('home');
         }
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('home');
     }
 
     #[Route('/remove/{id}', name: 'cart_remove')]

@@ -25,13 +25,6 @@ endblock %}
 			</div>
 		</div>
 		<div >
-			{{ form_row(ProductForm.year, {
-    'label': 'Periode',
-    'attr': {
-    'placeholder': '2000 , 90"s, 80"s ...'
-    }
-    }) }}
-		</div>
 		<div >
 			<div >
 				{{ form_row(ProductForm.price, {
@@ -43,7 +36,7 @@ endblock %}
 			</div>
 		</div>
 		<div>
-			{{ form_row(ProductForm.size, {
+			{{ form_row(ProductForm.adminSelectedsize, {
     'label': 'Taille',
     }) }}
 		</div>

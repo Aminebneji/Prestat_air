@@ -3,7 +3,7 @@
 
 {% block body %}
 
-<h1 class="pb-5">Liste des utilisateurs</h1>
+<h1 class="pb-5 List">Liste des utilisateurs</h1>
 
 <table class="table table-hover table-dark text-center align-middle">
     <thead>
@@ -25,7 +25,6 @@
             <td>{{ user.kind[0]}}</td>
             <td>{{ user.city ~ ' ' ~ user.region}}</td>
             <td>
-                <a href="#" class="me-2"><i class="bi bi-pencil-square text-primary"></i></a>
                 <a href="{{ path('user_delete', {'id': user.id}) }}"
                     onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')"><i
                         class="bi bi-trash text-danger"></i></a>

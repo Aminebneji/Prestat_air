@@ -26,18 +26,15 @@
 					€
 				</p>
 				<hr class="text-secondary my-4">
-				<p>Taille :
-						{{ product.size[0] }}
+				<p>Tailles :
+						{{size}}
 				</p>
-
 				{% if app.user %}
-					<a class="btn btn-success" href="{{ path('cart_add', {'id': product.id}) }}">Ajouter au Panier</a>
-				{% endif %}
+					<a class="btn btn-success" href="{{ path('product_purchase', {'id': product.id}) }}">Acheter</a>
 				<hr class="text-secondary my-4">
+				{% endif %}
 			</div>
-
 		</div>
-
 		<div class="row my-5">
 			<div class="col-10 offset-1">
 				<h2 class="mb-3">Description</h2>

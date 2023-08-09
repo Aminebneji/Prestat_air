@@ -9,7 +9,6 @@ text 'Questrial', sans-serif;
 
 - maquette 
 - relever toutes les parties statiques de l'interface / dynamique 
-
 - filtre produits
 - recherche par attribut 
 
