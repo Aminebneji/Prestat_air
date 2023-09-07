@@ -2,14 +2,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	<div class="purchase">
+	<div class="purchase py-5">
 		<h1>Séléctionnez votre taille</h1>
 		{{ form_start(form) }}
 		<div class="purchaseSelector">
 			{{ form_row(form.selectedSize, {
             }) }}
 		</div>
-		<a class="btn btn-success purchaseLink" href="{{ path('cart_add', {'id':product.id}) }}">Ajouter au panier</a>
+
+		<button class="btn btn-success purchaseLink">Ajouter au panier</button>
 
 
 		{{ form_end(form) }}

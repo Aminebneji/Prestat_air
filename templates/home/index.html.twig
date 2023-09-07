@@ -44,7 +44,7 @@
 				{% if closest %}
 				<h1>Notre dernière paire :</h1>
 					<p>{{ closest.name }}</p>
-					<img src="{{ asset('imgs/products/' ~ closest.image) }}">
+					<img src="{{ asset('imgs/products/' ~ closest.image) }}" class="w-100">
                     <a href="{{path('product_show' , {'name' : closest.name}) }}" class="btn btn-outline-secondary">Voir</a>
 				{% else %}
 					<p>Aucun produit trouvé.</p>
@@ -64,14 +64,14 @@
 				</div>
 			</div>
 		</div>
-
+{# 
 		<div class="newsletter">
 			<p>Abonnez-vous à notre newsletter pour être informée avant tout le monde des prochaines sorties, des exclusivités, des actualités et de nos promos !</p>
 			<p>
 				<span>
 					s'inscire à la newsletter</span>
-				<input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+				<input class="form-control form-control-lg" type="text" placeholder="@mail">
 			</p>
-		</div>
+		</div> #}
 	</div>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Entity\Products;
 use App\Repository\ProductsRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -17,12 +18,15 @@ class CartService
     }
 
     public function add(int $id)
-    {
-        $cart = $this->requestStack->getSession()->get('cart', []); // récupère le panier ou un tableau vide
-        if (!empty($cart[$id])) { // si le produit est déjà dans le panier
-            $cart[$id]++; // incrémente de 1 la quantité associée
+    {   // récupère le panier ou un tableau vide
+        $cart = $this->requestStack->getSession()->get('cart', []); 
+        // si le produit est déjà dans le panier
+        if (!empty($cart[$id])) { 
+            // incrémente de 1 la quantité associée
+            $cart[$id]++; 
         } else {
-            $cart[$id] = 1; // définit la quantité associée à 1
+            // définit la quantité associée à 1
+            $cart[$id] = 1; 
         }
         $this->requestStack->getSession()->set('cart', $cart);
     }
@@ -51,14 +55,17 @@ class CartService
     }
 
     public function clear(): void
-    {
+    {   
+        
         $this->requestStack->getSession()->remove('cart');
+
     }
 
     public function getCart(): array
-    {
-        $sessionCart = $this->requestStack->getSession()->get('cart', []); // récupère le panier en session
-        $cart = []; // initialise un nouveau panier
+    {   // récupère le panier en session
+        $sessionCart = $this->requestStack->getSession()->get('cart', []); 
+        // initialise un nouveau panier
+        $cart = []; 
         foreach ($sessionCart as $id => $quantity) {
             $element = [
                 'product' => $this->productRepository->find($id),

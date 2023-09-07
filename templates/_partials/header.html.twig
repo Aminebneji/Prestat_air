@@ -1,39 +1,38 @@
 <nav class="navbar navbar-expand-lg p-3">
-    {% if is_granted('ROLE_ADMIN') %}
-    <a class="btn btn-warning" href="{{path('admin_products')}}" >ADMIN</a>
-    {% endif %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a class="btn btn-warning" href="{{path('admin_products')}}">ADMIN</a>
+	{% endif %}
 
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse " id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light ">
+	<div class="container header">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0 text-light">
 
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ path('home') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="{{ path('showAllProducts') }}">Nos Produits</a>
-                </li>
-                {% if app.user %}
-                <li class="nav-item" >
-                    <a class="nav-link active text-light" aria-current="page" href="{{ path('cart') }}">
-                    <i class=" bi bi-basket-fill"></i></a>
-                </li>
-                {% endif %}
-            </ul>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="{{ path('home') }}">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-light" href="{{ path('showAllProducts') }}">Nos Produits</a>
+				</li>
+				{% if app.user %}
+					<li class="nav-item">
+						<a class="nav-link active text-light" aria-current="page" href="{{ path('cart') }}">
+							<i class=" bi bi-basket-fill"></i>
+						</a>
+					</li>
+				{% endif %}
+			</ul>
 
-        </div>
-    </div>
+		</div>
+	</div>
 
-    {% if app.user %}
-        <a class="navbar-text btn btn-light" href="{{ path('app_logout') }}">Logout</a>
-    {% else %}
+	{% if app.user %}
+		<a class="navbar-text btn btn-light" href="{{ path('app_logout') }}">Déconnexion</a>
+	{% else %}
 
-    <a class="navbar-text btn btn-light" href="{{ path('app_login') }}">Connexion</a>
-    </div>
-    {% endif %}
-
+		<a class="navbar-text btn btn-light" href="{{ path('app_login') }}">Connexion</a>
+	</div>
+{% endif %}
 </nav>

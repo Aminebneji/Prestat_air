@@ -4,10 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Products;
 use App\Entity\Purchase;
-use App\Entity\User;
 use App\Form\PurchaseType;
 use App\Repository\PurchaseRepository;
-use Doctrine\ORM\Mapping\Id;
+use App\Service\CartService as ServiceCartService;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PurchaseController extends AbstractController
 {
     #[Route('purchase/product/{id}', name: 'product_purchase')]
-    public function purchaseProduct(Request $request, Products $products, ManagerRegistry $managerRegistry , User $user)
+    public function purchaseProduct(Request $request, Products $products, ManagerRegistry $managerRegistry, CartController $cart, ServiceCartService $cartService)
     {
         $purchase = new Purchase();
         $purchase->setProduct($products);
@@ -38,23 +37,27 @@ class PurchaseController extends AbstractController
             $selectedSizeId = $form->get('selectedSize')->getData();
             // Remplir les données de l'entité Purchase
             $purchase->setSelectedSize($selectedSizeId);
-            
-            $user = $this->getUser();
-            if ($user) {
-                $purchase->setUser($user); 
+
+            // Récupérer l'utilisateur connecté
+            $userForPurchase = $this->getUser();
+            if ($userForPurchase) {
+                $purchase->setUser($userForPurchase); 
             }
             // Sauvegarder l'achat en base de données
             $manager = $managerRegistry->getManager();
             $manager->persist($purchase);
             $manager->flush();
 
-            return $this->redirectToRoute('product_purchase');
+            // ajout au panier du produit par son id
+            $productId = $products->getId(); 
+            $cart->add($cartService , $productId , $request);
+
+            return $this->redirectToRoute('cart');
         }
 
         return $this->render('products\productPurchase.html.twig', [
             'form' => $form->createView(),
-            'product' => $products,
-            'user' => $user
+            'currentProduct' => $products,
         ]);
     }
 

@@ -6,19 +6,15 @@
 
 {% block body %}
 
-	<div class="container py-5">
+	<div class="container py-5 g-0 imageShow">
 
-		<div class="row my-5">
+		<div class="row my-5 g-sm-0 w-100 mx-0 justify-content-between">
 
-			<div class="col-4 offset-1">
-				<div class="row mb-4">
-					<div class="col-12">
-						<img src="{{ asset('imgs/products/' ~ product.image) }}" alt=" {{product.name}} - image" class="w-100">
-					</div>
-				</div>
+			<div class="col-lg-4 col-sm-12 p-0">
+				<img src="{{ asset('imgs/products/' ~ product.image) }}" alt=" {{product.name}} - image" class="w-100">
 			</div>
 
-			<div class="col-5 offset-1">
+			<div class="col-lg-5 col-sm-12 p-0">
 				<h1 class="text-center">{{ product.name }}</h1>
 				<hr class="text-secondary my-4">
 				<p class="fs-3">
@@ -27,18 +23,19 @@
 				</p>
 				<hr class="text-secondary my-4">
 				<p>Tailles :
-						{{size}}
+					{{size}}
 				</p>
 				{% if app.user %}
 					<a class="btn btn-success" href="{{ path('product_purchase', {'id': product.id}) }}">Acheter</a>
-				<hr class="text-secondary my-4">
+					<hr class="text-secondary my-4">
 				{% endif %}
+
 			</div>
 		</div>
-		<div class="row my-5">
-			<div class="col-10 offset-1">
+		<div class="my-5">
+			<div class=" description col-12 ">
 				<h2 class="mb-3">Description</h2>
-				{{ product.description }}
+				{{ product.description[:2500]}}
 			</div>
 		</div>
 

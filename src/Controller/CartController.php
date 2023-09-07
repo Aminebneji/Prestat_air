@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Repository\ProductsRepository;
 use App\Service\CartService;
+use phpDocumentor\Reflection\Element;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request; 
 
 
 
@@ -31,9 +33,9 @@ class CartController extends AbstractController
             $this->addFlash('success', 'L\'article a bien été ajouté au panier');
         }
         if ($request->headers->get('referer') === $this->getParameter('domain') . '/cart/') {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('cart');
         }
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('cart');
     }
 
     #[Route('/remove/{id}', name: 'cart_remove')]
@@ -48,7 +50,7 @@ class CartController extends AbstractController
     {
         $cartService->delete($id);
         return $this->redirectToRoute('cart');
-    }
+    } 
 
     #[Route('/clear', name: 'cart_clear')]
     public function clear(Cartservice $cartService): Response

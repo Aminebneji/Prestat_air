@@ -10,7 +10,7 @@
 </div>
 <form class="registerForm" method="post">
     {{ form_start(registrationForm) }}
-    <div class=" container_fluid">
+    <div class="container_fluid">
         <div>
             {{ form_row(registrationForm.email) }}
         </div>
@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="cgu">
         {{ form_row(registrationForm.agreeTerms, {
         label: 'j\'accepte les CGU'
         }) }}

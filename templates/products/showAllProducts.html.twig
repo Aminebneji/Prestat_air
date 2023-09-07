@@ -7,17 +7,15 @@
         <div class="text-center">
             <h1> Produits </h1>
         </div>
-    <div class="row my-5 container_fluid">
+    <div class="row my-5 row my-5 g-sm-0 w-100 mx-0 container_fluid">
 
         {% for product in products |reverse %}
-        {% if loop.index < 16 %} <div class="col-3 p-3">
-            <div class="card text-center text-bg-dark h-90">
-                <div class="card-body">
-                    <img src="{{ asset('imgs/products/' ~ product.image) }}" alt="image de la chaussure" class="product-img w-100" height="250px">
+        {% if loop.index < 16 %} <div class="col-lg-3 col-sm-3 p-3">
+            <div class="card text-center text-bg-dark h-100">
+                    <img src="{{ asset('imgs/products/' ~ product.image) }}" alt="image de la chaussure" class="product-img w-100">
                     <h5 class="card-title">{{ product.name[:13]|upper}} {% if product.name|length > 15 %} ... {% endif %}</h5>
                     <p class="card-text">{{ product.price|number_format(2, ',', ' ') }} €</p>
-                    <a href="{{path('product_show' , {'name' : product.name}) }}" class="btn btn-primary">Voir</a>
-                </div>
+                    <a href="{{path('product_show' , {'name' : product.name}) }}" class="btn btn-primary w-25 mx-auto">Voir</a>
             </div>
     </div>
     {% endif %}

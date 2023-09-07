@@ -43,6 +43,18 @@ header li {
   font-size: 3.5vw;
 }
 
+@media screen and (max-width: 870px) {
+  header {
+    width: fit-content;
+    display: flex;
+    margin: 0;
+  }
+
+  .hello {
+    margin-left: 13%;
+  }
+}
+
 /* **********************************     MAIN    *****************************************  */
 
 .homeContainer {
@@ -85,7 +97,7 @@ header li {
   font-size: 1.5vw;
 }
 
-.lastProduct a{
+.lastProduct a {
   margin: 3%;
   width: 30%;
   font-family: "Neuton", serif;
@@ -120,6 +132,32 @@ header li {
   margin-left: 2.5%;
 }
 
+@media screen and (max-width: 870px) {
+  .homeContainer {
+    padding: 0;
+  }
+  .lastProduct img {
+    margin-left: 3%;
+    width: 20vh;
+    height: 20vh;
+  }
+  .presentationContainer {
+    display: flex;
+    margin-bottom: 3%;
+  }
+  .presentationContainer .text {
+    margin-top: 5vh;
+    margin-left: 9%;
+    font-size: 2vw;
+    font-weight: 700;
+    width: 30%;
+  }
+
+  .newsletter {
+    margin: 3%;
+  }
+}
+
 /* **********************************    FOOTER   *****************************************  */
 
 footer ul {
@@ -152,7 +190,7 @@ footer #copyright p {
   margin-top: 10vh;
 }
 
-/* **********************************   Cart   *****************************************  */
+/* **********************************   CART   *****************************************  */
 
 .cart {
   margin-top: 10vh;
@@ -163,6 +201,10 @@ footer #copyright p {
   margin-bottom: 2vh;
 }
 
+.cart img {
+  height: 20%;
+  width: 20%;
+}
 /* **********************************   CONNECTION PAGE   *****************************************  */
 
 .connect {
@@ -191,6 +233,14 @@ a {
   font-family: "Neuton", serif;
 }
 
+.connect .rememberCheckbox {
+  display: flex;
+  padding: 0;
+  margin: 0; 
+  margin-left: 49%;
+  margin-top: -1.3%;
+}
+
 /* **********************************   REGISTER PAGE   *****************************************  */
 
 .registerTitle {
@@ -209,36 +259,46 @@ a {
   font-family: "Neuton", serif;
 }
 
+/* **********************************   PRODUCT PAGE   *****************************************  */
+
+.description p {
+  width: 10px;
+}
 
 /* **********************************   CREATE PRODUCT PAGE   *****************************************  */
 
-
 .productFormTitle {
-    margin-top: 10vh;
-    text-align: center;
-  }
-  
-  .productForm{
-    margin-left: 35%;
-  }
-  .productForm label {
-    font-size: 1.5vw;
-    width: 25vh;
-  }
-  .productForm input {
-    margin-bottom: 2%;
-    width: 65vh;
+  margin-top: 10vh;
+  text-align: center;
+}
 
-  }
+.productForm {
+  margin-left: 35%;
+}
+.productForm label {
+  font-size: 1.5vw;
+  width: 25vh;
+}
+.productForm input {
+  margin-bottom: 2%;
+  width: 65vh;
+}
 
-  .productFormDescription textarea{ 
-    width: 65vh;
-    height: 10vw;
-  }
+.productFormDescription textarea {
+  width: 65vh;
+  height: 10vw;
+}
 
-   .buttons{
-    margin-right: 55%;
-  }
+.buttons {
+  margin-right: 55%;
+}
+
+.form-check input {
+  width: 15px;
+}
+.form-check label {
+  font-size: medium;
+}
 
 @media screen and (max-width: 990px) {
   header {
@@ -258,10 +318,101 @@ a {
     text-align: center;
   }
 
+  .card-body {
+    height: 300px;
+  }
+
+  .col-3 {
+    margin: 0;
+  }
+
+  footer {
+    margin-top: 15%;
+    /* position: fixed; */
+    height: 25%;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+/* **********************************   Purchase PAGE   *****************************************  */
+
+.purchase {
+  margin-top: 10%;
+  padding-bottom: 10%;
+}
+
+.purchase h1 {
+  margin-left: 5%;
+}
+.purchaseSelector {
+  margin-left: 5%;
+  width: 25%;
+}
+.purchaseLink {
+  margin-left: 5%;
+}
+
+@media screen and (max-width: 870px) {
+  .purchase h1 {
+    margin-left: 17%;
+  }
+}
+/* **********************************   Mobile mode   *****************************************  */
+
+@media screen and (max-width: 670px) {
+  
+  .cartImage{
+    display: none;
+  }
+
+  .nav-item a{ 
+    font-size: 15px;
+  }
+
+  .homeContainer {
+    padding: 5%;
+    margin-top: 20%;
+  }
+  .lastProduct img {
+    margin-left: 3%;
+    width: 20vh;
+    height: 20vh;
+  }
+  .presentationContainer {
+    display: flex;
+    margin-bottom: 3%;
+  }
+  .presentationContainer .text {
+    margin-top: 5vh;
+    margin-left: 9%;
+    font-size: 2vw;
+    font-weight: 700;
+    width: 40%;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 5%;
+    z-index: 1;
+    background-color: transparent;
+    font-size: 1.5vw;
+  }
+
+  header li {
+    background-color: rgba(0, 0, 0, 0.541);
+    text-align: center;
+  }
+
+  header button {
+    margin-left: 65%;
+    margin-top: 5%;
+  }
+
   .product-img {
-    margin-bottom: 10px;
-    width: 170px;
-    height: 100px;
+    width: 100%;
   }
 
   .card-body {
@@ -274,28 +425,61 @@ a {
 
   footer {
     margin-top: 15%;
-    position: fixed;
+    height: 25%;
     bottom: 0;
     width: 100%;
+    font-size: 1vw;
   }
-}
+  footer h5 {
+    font-size: 2vw;
+  }
 
-/* **********************************   Purchase PAGE   *****************************************  */
+  .connect input{ 
+    width: 30%;
+    margin-left: 35%;
+  }
+  .connect label{ 
+    font-size: 20px;
+    text-align: center;
+  }
+  .connect .rememberCheckbox{ 
+    display: none;
+  }
+  .creaAccount p{ 
+    font-size: 15px;
+  }
+  .creaAccount a{ 
+    font-size: 15px;
+  }
 
-.purchase{ 
+  .registerForm{ 
+    margin: 0;
+    width: 100vw;
+  }
 
-  margin-top: 10%;
-  padding-bottom: 10%;
-}
+  .registerForm p{
+    font-size: 2.5vw;
+  } 
 
-.purchase h1 { 
-  margin-left: 5%;
-} 
-.purchaseSelector{ 
-  margin-left: 5%;
-  width: 25%;
-}
-.purchaseLink{ 
-  margin-left: 5%;
+  .registerForm input{ 
+    width: 80vw;
+    margin-left: 10%;
+  }
 
+  .registerForm label{ 
+    font-size: 20px;
+    margin-left: 10%;
+  }
+
+  .registerForm button{
+    margin-right: 25%;
+  }
+
+  .form-check input{ 
+    width: 15px;
+    margin-left: 10%;
+  }
+  .form-check { 
+    margin-left: 10%;
+  }
 }
