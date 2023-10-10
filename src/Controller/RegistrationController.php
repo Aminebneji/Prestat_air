@@ -40,9 +40,6 @@ class RegistrationController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // generate a signed url and email it to the user
-
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
